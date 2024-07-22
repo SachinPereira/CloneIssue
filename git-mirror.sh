@@ -27,7 +27,7 @@ git remote add mirror "$DESTINATION_REPO"
 git fetch -p mirror
 
 git tag -d $(git tag -l)
-git fetch src_remote --tags --quiet
+
 git push origin --tags --force
 
 GIT_PUSH_COMMAND='git push mirror'
