@@ -22,16 +22,12 @@ echo "UPDATED DESTINATION=$DESTINATION_REPO"
 echo "DRY RUN=$DRY_RUN"
 
 # Execute
+
 git clone --mirror "$SOURCE_REPO" "$SOURCE_DIR" && cd "$SOURCE_DIR"
 git remote add mirror "$DESTINATION_REPO"
-git fetch -p mirror
-
-git fetch --all
-git fetch origin +refs/tags/*:refs/tags/*
 
 GIT_PUSH_COMMAND='git push mirror --all'
-# Push all refs and tags to the new remote
-GIT_PUSH_COMMAND='git push mirror --all'
+
 
 if [ "$DRY_RUN" = "true" ]
 then
