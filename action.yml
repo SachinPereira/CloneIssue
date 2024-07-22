@@ -1,0 +1,41 @@
+name: 'Mirror a git repository GitHub Action'
+description: 'A GitHub Action for mirroring a git repository from one location to another using HTTPS.'
+
+inputs:
+  source-repo:
+    description: 'HTTPS git URL of the source repo.'
+    required: true
+    default: ''
+  source-github-token:
+    description: 'The GitHub token used for cloning the source-repo.'
+    required: false
+    default: ''
+  destination-repo:
+    description: 'HTTPS git URL of the destination repo.'
+    required: true
+    default: ''
+  destination-github-token:
+    description: 'The GitHub token used for pushing to the destination-repo.'
+    required: true
+    default: ''
+  follow-tags:
+    description: 'Follow tags when mirroring the repository.'
+    required: false
+    default: 'true'
+  dry-run:
+    description: 'Execute a dry run.'
+    required: false
+    default: 'false'
+
+
+runs:
+  using: 'composite'
+  steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Run git-mirror.sh
+      run: |
+        chmod +x git-mirror.sh
+        ./git-mirror.sh "${{ inputs.source-repo }}" "${{ inputs.source-github-token }}" "${{ inputs.destination-repo }}" "${{ inputs.destination-github-token }}" "${{ inputs.follow-tags }}"  "${{ inputs.dry-run }}"
+      shell: bash
