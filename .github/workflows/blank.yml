@@ -8,7 +8,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: SachinPereira/CloneIssue@master
+      - uses: SachinPereira/CloneIssue@c4e6bf52e6e4b998eea75d3ffe8bd9260ba31a93
         with:
           source-repo: 'https://github.com/open-source-parsers/jsoncpp.git'
           destination-repo: 'https://github.com/SachinPereira/jsoncpp.git'
