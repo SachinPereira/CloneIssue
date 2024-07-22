@@ -24,10 +24,9 @@ echo "DRY RUN=$DRY_RUN"
 # Execute
 git clone --mirror "$SOURCE_REPO" "$SOURCE_DIR" && cd "$SOURCE_DIR"
 git remote add mirror "$DESTINATION_REPO"
-git fetch -p mirror
 
-
-git push origin --tags --force
+git fetch -p origin
+git push --mirror
 
 GIT_PUSH_COMMAND='git push mirror'
 
