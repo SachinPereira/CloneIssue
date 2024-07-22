@@ -26,7 +26,6 @@ git clone --mirror "$SOURCE_REPO" "$SOURCE_DIR" && cd "$SOURCE_DIR"
 git remote add mirror "$DESTINATION_REPO"
 git fetch -p mirror
 
-git tag -d $(git tag -l)
 
 git push origin --tags --force
 
