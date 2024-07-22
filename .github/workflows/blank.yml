@@ -11,7 +11,7 @@ jobs:
       - uses: SachinPereira/CloneIssue@13fde165497595ad351c019e74f38c409b7f042b
         with:
           source-repo: 'https://github.com/open-source-parsers/jsoncpp.git'
-          destination-repo: 'https://github.com/sachin/jsoncpp.git'
+          destination-repo: 'https://github.com/SachinPereira/jsoncpp.git'
           destination-github-token: ${{ secrets.TEST_TOKEN }}
           dry-run: 'false'
           follow-tags: 'true'
