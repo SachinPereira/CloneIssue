@@ -26,9 +26,10 @@ git clone --mirror "$SOURCE_REPO" "$SOURCE_DIR" && cd "$SOURCE_DIR"
 git remote add mirror "$DESTINATION_REPO"
 git fetch -p mirror
 
-# Fetch all tags explicitly
-git fetch origin --tags
+git fetch --all
+git fetch origin +refs/tags/*:refs/tags/*
 
+GIT_PUSH_COMMAND='git push mirror --all'
 # Push all refs and tags to the new remote
 GIT_PUSH_COMMAND='git push mirror --all'
 
