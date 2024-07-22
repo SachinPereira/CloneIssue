@@ -29,9 +29,6 @@ git fetch -p mirror
 # Fetch all tags explicitly
 git fetch --all --tags
 
-# Verify all tags
-echo "Tags in the repository:"
-git tag
 
 # Push to the new remote
 git push --mirror $TARGET_REPO_URL
