@@ -27,14 +27,11 @@ git remote add mirror "$DESTINATION_REPO"
 # Filter out hidden refs
 git for-each-ref --format='delete %(refname)' refs/pull | git update-ref --stdin
 
-GIT_PUSH_COMMAND='git push mirror --all'
+# Push all refs and tags
+GIT_PUSH_COMMAND='git push --mirror mirror'
 
 if [ "$DRY_RUN" = "true" ]; then
     GIT_PUSH_COMMAND="$GIT_PUSH_COMMAND --dry-run"
-fi
-
-if [ "$FOLLOW_TAGS" = "true" ]; then
-    GIT_PUSH_COMMAND="$GIT_PUSH_COMMAND --follow-tags"
 fi
 
 eval $GIT_PUSH_COMMAND
