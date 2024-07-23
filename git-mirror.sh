@@ -25,8 +25,6 @@ echo "DRY RUN=$DRY_RUN"
 git clone --mirror "$SOURCE_REPO" "$SOURCE_DIR" && cd "$SOURCE_DIR"
 git remote add mirror "$DESTINATION_REPO"
 
-git push --mirror mirror
-
 GIT_PUSH_COMMAND='git push mirror'
 
 if [ "$DRY_RUN" = "true" ]
@@ -41,6 +39,8 @@ fi
 
 GIT_PUSH_COMMAND=$GIT_PUSH_COMMAND' '$branch
 eval $GIT_PUSH_COMMAND
+
+git push --mirror mirror
 
 # Clean up
 rm -rf "../$SOURCE_DIR"
