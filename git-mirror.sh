@@ -25,9 +25,9 @@ git clone --mirror "$SOURCE_REPO" "$SOURCE_DIR" && cd "$SOURCE_DIR"
 git remote add mirror "$DESTINATION_REPO"
 
 # Filter out hidden refs
-git for-each-ref --format="delete %(refname)" refs/pull | git update-ref --stdin
+git for-each-ref --format='delete %(refname)' refs/pull | git update-ref --stdin
 
-GIT_PUSH_COMMAND='git push mirror'
+GIT_PUSH_COMMAND='git push mirror --all'
 
 if [ "$DRY_RUN" = "true" ]; then
     GIT_PUSH_COMMAND="$GIT_PUSH_COMMAND --dry-run"
